@@ -1,0 +1,28 @@
+<div class="connected-title">
+  Connected with <strong>{{ hostInfo.username }}</strong>
+</div>
+<div class="playlists" *ngIf="!loading">
+  <div class="playlist" (click)="showDetails(p)" *ngFor="let p of playlists; trackBy: trackByUUID">
+    <div class="title">
+      {{ p.name | titlecase }} ({{ p.tracksIds.length }})
+      <ng-container *ngIf="isDownloading(p)">
+        Downloading...{{ downloading[p.uuid]?.progress || 0 }}%
+      </ng-container>
+    </div>
+    <button class="scan" mat-mini-fab color="primary" (click)="showMenu($event, p)" [disabled]="isDownloading(p)">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+</div>
+
+<ng-template #playlistDetails let-close="close" let-playlist="playlist" let-tracks="tracks">
+  <div class="playlist-details">
+    <mat-icon (click)="close()">close</mat-icon>
+    <div class="playlist-title">{{ playlist.name | titlecase }}</div>
+    <div class="tracks">
+      <div class="track" *ngFor="let track of tracks; trackBy: trackByTrackId">
+        {{ track.name }}
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,21 @@
+
+<div class="scanner-wrapper" *ngIf="showScanner">
+  <mat-icon (click)="closeScanner()">cancel</mat-icon>
+  <zxing-scanner
+    [formats]="allowedFormats"
+    [timeBetweenScans]="1000"
+    (camerasNotFound)="camerasNotFoundHandler($event)"
+    (scanComplete)="scanCompleteHandler($event)"
+    (scanError)="onScanError($event)"
+    (permissionResponse)="checkPermissions($event)"
+    >
+  </zxing-scanner>
+</div>
+
+<div class="content" *ngIf="!showScanner">
+  <router-outlet></router-outlet>
+</div>
+
+<button class="scan" mat-fab color="primary" (click)="scan()" *ngIf="!showScanner">
+  <mat-icon>qr_code_scanner</mat-icon>
+</button>

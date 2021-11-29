@@ -4,21 +4,27 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "build": "npx ng build --output-hashing all --aot --build-optimizer --optimization",
+    "watch": "ng build --watch --configuration development",
+    "serve": "npx --max_old_space_size=4096 ng serve --poll=2000 --host=0.0.0.0 --configuration development --disable-host-check true",
+    "deploy": "npm run build && cp dist/ytd-pwa/index.html dist/ytd-pwa/200.html && echo '*' > dist/ytd-pwa/CORS && surge --domain https://ytd.surge.sh dist/ytd-pwa"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.1.0",
+    "@angular/cdk": "^12.2.12",
     "@angular/common": "~12.1.0",
     "@angular/compiler": "~12.1.0",
     "@angular/core": "~12.1.0",
     "@angular/forms": "~12.1.0",
+    "@angular/material": "^12.2.12",
     "@angular/platform-browser": "~12.1.0",
     "@angular/platform-browser-dynamic": "~12.1.0",
     "@angular/router": "~12.1.0",
     "@angular/service-worker": "~12.1.0",
+    "@zxing/library": "^0.18.6",
     "@zxing/ngx-scanner": "^3.2.0",
+    "howler": "^2.2.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
@@ -27,6 +33,7 @@
     "@angular-devkit/build-angular": "~12.1.0",
     "@angular/cli": "~12.1.0",
     "@angular/compiler-cli": "~12.1.0",
+    "@types/howler": "^2.2.4",
     "@types/node": "^12.11.1",
     "typescript": "~4.3.2"
   }

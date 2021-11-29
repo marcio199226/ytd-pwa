@@ -1,0 +1,18 @@
+<mat-nav-list>
+  <a href="#" mat-list-item (click)="triggerAction($event, 'download-streaming')">
+    <mat-icon>download_for_offline</mat-icon>
+    <span mat-line>Download (in background) for streaming</span>
+    <span mat-line>Download for later playback</span>
+  </a>
+
+  <a href="#" mat-list-item (click)="triggerAction($event, 'download')">
+    <mat-icon>download_for_offline</mat-icon>
+    <span mat-line>Download to device</span>
+    <span mat-line>Download zip with all tracks</span>
+  </a>
+
+  <a href="#" mat-list-item (click)="triggerAction($event, 'playback')">
+    <mat-icon>play_circle_filled</mat-icon>
+    <span mat-line>Play</span>
+  </a>
+</mat-nav-list>

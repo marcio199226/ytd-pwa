@@ -2,15 +2,203 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>YtdPwa</title>
+  <title>Ytd</title>
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#1976d2">
+
+  <style>
+    .mat-typography {
+      font: 400 14px/20px Roboto, Helvetica Neue, sans-serif;
+      letter-spacing: normal;
+    }
+  </style>
+  <style type="text/css">
+    splash-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 99999;
+      pointer-events: none;
+    }
+
+    splash-screen .spinner-wrapper {
+      display: block;
+      position: relative;
+      width: 150px;
+      min-height: 100px;
+      height: 100px;
+      background: white;
+      opacity: 0.5;
+      border-radius: 12px;
+    }
+
+    splash-screen .spinner-wrapper .spinner {
+      position: absolute;
+      overflow: hidden;
+      left: 50%;
+      margin-left: -50px;
+      animation: outer-rotate 2.91667s linear infinite;
+    }
+
+    splash-screen .spinner-wrapper .spinner .inner {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      animation: sporadic-rotate 5.25s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+    }
+
+    splash-screen .spinner-wrapper .spinner .inner .gap {
+      position: absolute;
+      left: 49px;
+      right: 49px;
+      top: 0;
+      bottom: 0;
+      border-top: 10px solid;
+      box-sizing: border-box;
+    }
+
+    splash-screen .spinner-wrapper .spinner .inner .left,
+    splash-screen .spinner-wrapper .spinner .inner .right {
+      position: absolute;
+      top: 0;
+      height: 100px;
+      width: 50px;
+      overflow: hidden;
+    }
+
+    splash-screen .spinner-wrapper .spinner .inner .left .half-circle,
+    splash-screen .spinner-wrapper .spinner .inner .right .half-circle {
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100px;
+      box-sizing: border-box;
+      border: 10px solid #4285F4;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+    }
+
+    splash-screen .spinner-wrapper .spinner .inner .left {
+      left: 0;
+    }
+
+    splash-screen .spinner-wrapper .spinner .inner .left .half-circle {
+      left: 0;
+      border-right-color: transparent;
+      animation: left-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+      -webkit-animation: left-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+    }
+
+    splash-screen .spinner-wrapper .spinner .inner .right {
+      right: 0;
+    }
+
+    splash-screen .spinner-wrapper .spinner .inner .right .half-circle {
+      right: 0;
+      border-left-color: transparent;
+      animation: right-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+      -webkit-animation: right-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+    }
+
+    @keyframes outer-rotate {
+      0% {
+        transform: rotate(0deg) scale(0.5);
+      }
+
+      100% {
+        transform: rotate(360deg) scale(0.5);
+      }
+    }
+
+    @keyframes left-wobble {
+
+      0%,
+      100% {
+        transform: rotate(130deg);
+      }
+
+      50% {
+        transform: rotate(-5deg);
+      }
+    }
+
+    @keyframes right-wobble {
+
+      0%,
+      100% {
+        transform: rotate(-130deg);
+      }
+
+      50% {
+        transform: rotate(5deg);
+      }
+    }
+
+    @keyframes sporadic-rotate {
+      12.5% {
+        transform: rotate(135deg);
+      }
+
+      25% {
+        transform: rotate(270deg);
+      }
+
+      37.5% {
+        transform: rotate(405deg);
+      }
+
+      50% {
+        transform: rotate(540deg);
+      }
+
+      62.5% {
+        transform: rotate(675deg);
+      }
+
+      75% {
+        transform: rotate(810deg);
+      }
+
+      87.5% {
+        transform: rotate(945deg);
+      }
+
+      100% {
+        transform: rotate(1080deg);
+      }
+    }
+  </style>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
-  <app-root></app-root>
+<body class="mat-typography">
+  <app-root>
+    <splash-screen>
+      <div class="spinner-wrapper">
+        <div class="spinner">
+          <div class="inner">
+            <div class="gap"></div>
+            <div class="left">
+              <div class="half-circle"></div>
+            </div>
+            <div class="right">
+              <div class="half-circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </splash-screen>
+  </app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 </html>

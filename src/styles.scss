@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/cdk/overlay-prebuilt.css';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  background: url("assets/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+}
+
+.overlay-backdrop-darker {
+  background: rgba(0,0,0,.9);
+}

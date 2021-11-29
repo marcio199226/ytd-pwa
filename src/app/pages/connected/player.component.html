@@ -1,0 +1,41 @@
+<div class="player">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="close()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>
+      {{ idx+1 }} / {{ tracks.length }}
+    </span>
+  </mat-toolbar>
+  <div class="wrapper">
+    <div class="playlist">
+      {{ playlist.name | titlecase }}
+    </div>
+    <div class="track">
+      {{ currentTrack.name }}
+    </div>
+    <div class="cover">
+      <img [src]="trackCover" />
+    </div>
+    <div class="commands">
+      <mat-icon class="prev" (click)="prev()">
+        skip_previous
+      </mat-icon>
+      <mat-icon class="play" (click)="play()" *ngIf="!playing">
+        play_circle_filled
+      </mat-icon>
+      <mat-icon class="stop" (click)="pause()" *ngIf="playing">
+        pause
+      </mat-icon>
+      <mat-icon class="next" (click)="next()">
+        skip_next
+      </mat-icon>
+    </div>
+    <div class="time">
+      <div class="elapsed">{{ elapsedTime }}</div>
+      <mat-progress-bar [mode]="isReady ? 'determinate' : 'indeterminate'" [value]="elapsedTimeProgress" color="warn">
+      </mat-progress-bar>
+      <div class="total">{{ duration * 1000 | date: 'mm:ss' }}</div>
+    </div>
+  </div>
+</div>
