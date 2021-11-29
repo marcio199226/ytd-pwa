@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npx ng build --output-hashing all --aot --build-optimizer --optimization",
+    "build": "npx ng build --output-hashing all --aot --build-optimizer --optimization --vendor-chunk",
     "watch": "ng build --watch --configuration development",
     "serve": "npx --max_old_space_size=4096 ng serve --poll=2000 --host=0.0.0.0 --configuration development --disable-host-check true",
     "deploy": "npm run build && cp dist/ytd-pwa/index.html dist/ytd-pwa/200.html && echo '*' > dist/ytd-pwa/CORS && surge --domain https://ytd.surge.sh dist/ytd-pwa"
